@@ -39,7 +39,7 @@ app/src/test/ - Unit tests
 
 ### Setup
 
-1. Clone the repository:
+Clone the repository:
    ```sh
    git clone https://github.com/ahmetbabacaan/eterationshopcase.git
    cd eterationshopcase
