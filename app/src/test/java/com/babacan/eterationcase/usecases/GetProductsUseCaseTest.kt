@@ -1,4 +1,4 @@
-package com.babacan.eterationcase
+package com.babacan.eterationcase.usecases
 
 import app.cash.turbine.test
 import com.babacan.eterationcase.core.Result
@@ -13,7 +13,8 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.kotlin.*
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetProductsUseCaseTest {

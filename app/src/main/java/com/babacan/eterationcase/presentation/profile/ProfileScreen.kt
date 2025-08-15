@@ -31,7 +31,6 @@ import com.babacan.eterationcase.ui.theme.Montserrat
 fun ProfileRoute(
     navigateBack: () -> Unit, viewModel: ProfileViewModel = hiltViewModel()
 ) {
-    val viewState by viewModel.state.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.effect.collect { effect ->
@@ -41,14 +40,11 @@ fun ProfileRoute(
         }
     }
 
-    ProfileScreen(
-        viewState = viewState, onViewEvent = viewModel::setEvent
-    )
+    ProfileScreen()
 }
 
 @Composable
 fun ProfileScreen(
-    viewState: ProfileState, onViewEvent: (ProfileEvent) -> Unit
 ) {
     Scaffold(
         modifier = Modifier
@@ -66,7 +62,7 @@ fun ProfileScreen(
                     color = Color.White,
                     modifier = Modifier.padding(start = 16.dp, top = 6.dp, bottom = 14.dp),
                     fontSize = 24.sp,
-                    fontFamily = Montserrat,          // <- kendi Montserrat FontFamily'in
+                    fontFamily = Montserrat,
                     fontWeight = FontWeight.ExtraBold,
                     textAlign = TextAlign.Center
                 )
@@ -100,6 +96,5 @@ fun ProfileScreen(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun ProfileScreenPreview() {
-    ProfileScreen(
-        viewState = ProfileState(), onViewEvent = { })
+    ProfileScreen()
 }

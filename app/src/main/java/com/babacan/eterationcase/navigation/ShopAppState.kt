@@ -82,8 +82,4 @@ class ShopMainAppState(
             }
         }
     }
-
-    fun onBackClick() {
-        navController.popBackStack()
-    }
 }

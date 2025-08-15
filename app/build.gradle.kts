@@ -61,6 +61,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.paging.common.android)
+    implementation(libs.androidx.ui.test.junit4.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.kotlin.serialization)

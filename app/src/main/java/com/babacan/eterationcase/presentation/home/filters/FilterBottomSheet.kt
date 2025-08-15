@@ -1,4 +1,4 @@
-package com.babacan.eterationcase.presentation.home
+package com.babacan.eterationcase.presentation.home.filters
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -41,6 +41,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.babacan.eterationcase.presentation.home.HomeState
+import com.babacan.eterationcase.presentation.home.SearchBar
+import com.babacan.eterationcase.presentation.home.filters.SortPriorities
 import kotlinx.collections.immutable.toImmutableList
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -110,10 +113,14 @@ fun FilterBottomSheet(
 
         Divider(Modifier.padding(vertical = 8.dp))
 
-        Text("Brand", style = MaterialTheme.typography.titleMedium)
+        Text(
+            "Brand",
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
 
         SearchBar(
-          onSearchQuery = {
+            onSearchQuery = {
                 brandOptions = if (it.isEmpty()) {
                     viewState.filteredBrands
                 } else {
@@ -121,7 +128,7 @@ fun FilterBottomSheet(
                         brand.contains(it, ignoreCase = true)
                     }.toSet()
                 }
-          }
+            }
         )
         LazyColumn(Modifier.heightIn(min = 140.dp, max = 140.dp)) {
             items(brandOptions.toImmutableList(), key = { it }) { brand ->
@@ -138,34 +145,38 @@ fun FilterBottomSheet(
             }
         }
 
-            Divider(Modifier.padding(vertical = 8.dp))
+        Divider(Modifier.padding(vertical = 8.dp))
 
-            Text("Model", style = MaterialTheme.typography.titleMedium)
-            SearchBar(
-                onSearchQuery = {
-                    modelOptions = if (it.isEmpty()) {
-                        viewState.filteredModels
-                    } else {
-                        viewState.filteredModels.filter { model ->
-                            model.contains(it, ignoreCase = true)
-                        }.toSet()
-                    }
-                }
-            )
-            LazyColumn(Modifier.heightIn(min = 140.dp, max = 140.dp)) {
-                items(modelOptions.toImmutableList()) { model ->
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(
-                            checked = selectedModels.contains(model),
-                            onCheckedChange = {
-                                selectedModels =
-                                    if (it) selectedModels + model else selectedModels - model
-                            }
-                        )
-                        Text(model)
-                    }
+        Text(
+            "Model",
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+        SearchBar(
+            onSearchQuery = {
+                modelOptions = if (it.isEmpty()) {
+                    viewState.filteredModels
+                } else {
+                    viewState.filteredModels.filter { model ->
+                        model.contains(it, ignoreCase = true)
+                    }.toSet()
                 }
             }
+        )
+        LazyColumn(Modifier.heightIn(min = 140.dp, max = 140.dp)) {
+            items(modelOptions.toImmutableList()) { model ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Checkbox(
+                        checked = selectedModels.contains(model),
+                        onCheckedChange = {
+                            selectedModels =
+                                if (it) selectedModels + model else selectedModels - model
+                        }
+                    )
+                    Text(model)
+                }
+            }
+        }
 
 
 

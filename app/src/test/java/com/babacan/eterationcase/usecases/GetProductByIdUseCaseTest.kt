@@ -1,4 +1,4 @@
-package com.babacan.eterationcase
+package com.babacan.eterationcase.usecases
 
 import com.babacan.eterationcase.core.Result
 import com.babacan.eterationcase.data.local.ShopDAO

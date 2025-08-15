@@ -28,7 +28,6 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -66,8 +65,10 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.babacan.eterationcase.domain.model.ShopProduct
 import com.babacan.eterationcase.presentation.components.LoadingContent
+import com.babacan.eterationcase.presentation.home.filters.ShowFilterBottomSheet
 import com.babacan.eterationcase.ui.icons.IconStarSelected
 import com.babacan.eterationcase.ui.icons.IconStarUnselected
+import com.babacan.eterationcase.ui.icons.Searchicon
 import com.babacan.eterationcase.ui.theme.Montserrat
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.launch
@@ -234,7 +235,7 @@ fun SearchBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            imageVector = Icons.Default.Search,
+            imageVector = Icons.Searchicon,
             contentDescription = "",
             tint = Color(0xFF6B7280),
             modifier = Modifier.size(24.dp)
@@ -271,7 +272,9 @@ fun SearchBar(
                     Text(
                         text = "Search",
                         color = Color(0xFF9CA3AF),
-                        fontSize = 18.sp
+                        fontSize = 18.sp,
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.Medium
                     )
                 }
                 innerTextField()
@@ -292,23 +295,32 @@ fun FiltersRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
+
         Text(
             text = "Filters:",
+            color = Color.Black,
+            modifier = Modifier.padding(start = 16.dp),
             fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black
+            fontFamily = Montserrat,
+            fontWeight = FontWeight.Medium
         )
 
         Box(
             modifier = Modifier
-                .background(Color(0xFFD3D3D3), shape = RoundedCornerShape(4.dp))
+                .width(158.dp)
+                .height(36.dp)
+                .background(Color(0xFFD9D9D9), shape = RoundedCornerShape(4.dp))
                 .clickable { onSelectFilterClick() }
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            contentAlignment = Alignment.Center
+
         ) {
             Text(
                 text = "Select Filter",
-                fontSize = 16.sp,
-                color = Color.Black
+                color = Color.Black,
+                fontSize = 14.sp,
+                fontFamily = Montserrat,
+                fontWeight = FontWeight.Medium
             )
         }
     }
@@ -329,7 +341,7 @@ fun ProductCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(start = 16.dp, top = 16.dp, bottom = 8.dp)
             .clickable { onNavigateToDetail() },
         shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(4.dp),
@@ -386,8 +398,7 @@ fun ProductCard(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color.Black,
-                fontFamily = Montserrat,
-                maxLines = 2
+                fontFamily = Montserrat
             )
 
             Spacer(Modifier.height(12.dp))

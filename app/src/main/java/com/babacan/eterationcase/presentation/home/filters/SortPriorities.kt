@@ -1,4 +1,4 @@
-package com.babacan.eterationcase.presentation.home
+package com.babacan.eterationcase.presentation.home.filters
 
 enum class SortPriorities(val value: String) {
     OLD_TO_NEW("Old to New"),

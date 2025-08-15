@@ -11,7 +11,7 @@ import javax.inject.Inject
 class GetProductsUseCaseImpl @Inject constructor(
     private val repository: ShopProductRepository,
     private val shopDAO: ShopDAO,
-): GetProductsUseCase {
+) : GetProductsUseCase {
     override operator fun invoke(): Flow<Result<List<ShopProduct>>> {
         return flow {
             repository.getProducts().collect { products ->

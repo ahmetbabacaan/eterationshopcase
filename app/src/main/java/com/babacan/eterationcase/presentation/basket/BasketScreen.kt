@@ -1,6 +1,7 @@
 package com.babacan.eterationcase.presentation.basket
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,13 +17,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -33,7 +29,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,10 +37,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.babacan.eterationcase.domain.model.ShopProduct
 import com.babacan.eterationcase.presentation.home.products
-import com.babacan.eterationcase.ui.icons.IcMinus
-import com.babacan.eterationcase.ui.icons.IcPlus
 import com.babacan.eterationcase.ui.theme.Montserrat
-import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun BasketRoute(
@@ -163,7 +155,6 @@ fun TotalSection(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Total Section
         Column {
             Text(
                 text = "Total:",
@@ -185,22 +176,25 @@ fun TotalSection(
             )
         }
 
-        // Complete Button
         Button(
             onClick = { onCompleteClick() },
             modifier = Modifier
-                .width(120.dp)
-                .height(48.dp),
+                .width(182.dp)
+                .height(38.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Blue
             ),
             shape = RoundedCornerShape(8.dp)
         ) {
+
             Text(
                 text = "Complete",
                 color = Color.White,
-                fontWeight = FontWeight.Medium
+                fontSize = 18.sp,
+                fontFamily = Montserrat,
+                fontWeight = FontWeight.Bold
             )
+
         }
     }
 }
@@ -212,7 +206,6 @@ fun ProductItem(
     onIncreaseQuantity: (ShopProduct) -> Unit = {},
     onDecreaseQuantity: (ShopProduct) -> Unit = {}
 ) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -220,9 +213,8 @@ fun ProductItem(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Product Info
         Column(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f)
         ) {
             Text(
                 text = product.name,
@@ -234,62 +226,55 @@ fun ProductItem(
             Text(
                 text = product.price,
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.Blue,
+                color = Color.Blue
             )
         }
 
         Row(
             modifier = Modifier.padding(end = 24.dp),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-
-            IconButton(
-                onClick = { onDecreaseQuantity(product) },
+            Box(
                 modifier = Modifier
-                    .width(50.dp)
-                    .height(40.dp)
-                    .background(
-                        Color.Gray.copy(alpha = 0.1f),
-                    )
+                    .size(width = 50.dp, height = 40.dp)
+                    .background(Color.Gray.copy(alpha = 0.1f))
+                    .clickable { onDecreaseQuantity(product) },
+                contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = Icons.IcMinus,
-                    contentDescription = "Azalt",
-                    tint = Color.Gray,
-                    modifier = Modifier.size(16.dp),
+                Text(
+                    text = "-",
+                    color = Color.Gray,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
                 )
             }
 
             Box(
                 modifier = Modifier
-                    .width(50.dp)
-                    .height(40.dp)
-                    .background(Color.Blue, RoundedCornerShape(4.dp)),
+                    .size(width = 50.dp, height = 40.dp)
+                    .background(Color.Blue),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = product.quantity.toString(),
                     color = Color.White,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.Medium,
                     style = MaterialTheme.typography.titleMedium
                 )
             }
 
-            IconButton(
-                onClick = { onIncreaseQuantity(product) },
+            Box(
                 modifier = Modifier
-                    .width(50.dp)
-                    .height(40.dp)
-                    .background(
-                        Color.Gray.copy(alpha = 0.1f),
-                    )
+                    .size(width = 50.dp, height = 40.dp)
+                    .background(Color.Gray.copy(alpha = 0.1f))
+                    .clickable { onIncreaseQuantity(product) },
+                contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = Icons.IcPlus,
-                    contentDescription = "Artır",
-                    tint = Color.Gray,
-                    modifier = Modifier
-                        .size(16.dp),
+                Text(
+                    text = "+",
+                    color = Color.Gray,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
                 )
             }
         }

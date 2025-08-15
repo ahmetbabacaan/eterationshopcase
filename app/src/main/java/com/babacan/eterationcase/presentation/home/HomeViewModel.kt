@@ -13,6 +13,8 @@ import com.babacan.eterationcase.presentation.base.Effect
 import com.babacan.eterationcase.presentation.base.Event
 import com.babacan.eterationcase.presentation.base.State
 import com.babacan.eterationcase.presentation.home.HomeEffect.NavigateToDetail
+import com.babacan.eterationcase.presentation.home.filters.FilterModel
+import com.babacan.eterationcase.presentation.home.filters.SortPriorities
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf

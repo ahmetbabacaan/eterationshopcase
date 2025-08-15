@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class BottomNavBarViewModel @Inject constructor(
     shopDAO: ShopDAO
-) : BaseViewModel<BottomNavBarEvent, BottomNavBarState, BottomNavBarEffect> () {
+) : BaseViewModel<BottomNavBarEvent, BottomNavBarState, BottomNavBarEffect>() {
 
     override fun setInitialState(): BottomNavBarState {
         return BottomNavBarState()
@@ -30,7 +30,6 @@ class BottomNavBarViewModel @Inject constructor(
         }
     }
 }
-
 
 
 data class BottomNavBarState(

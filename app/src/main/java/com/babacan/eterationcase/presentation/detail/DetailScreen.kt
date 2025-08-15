@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -100,7 +100,7 @@ fun DetailScreen(
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back",
-                        tint = Color.White
+                        tint = Color.White,
                     )
                 }
 
@@ -109,7 +109,7 @@ fun DetailScreen(
                     color = Color.White,
                     modifier = Modifier
                         .weight(1f)
-                        .align (Alignment.CenterVertically)
+                        .align(Alignment.CenterVertically)
                         .padding(end = 75.dp, start = 35.dp),
                     fontSize = 18.sp,
                     maxLines = 1,
@@ -177,8 +177,6 @@ fun ProductDetailCard(
     modifier: Modifier = Modifier,
 ) {
     val blue = Color(0xFF2962FF)
-    val titleWeight = FontWeight.ExtraBold
-    val bodyColor = Color(0xFF374151)
 
     Column(modifier = modifier.padding(12.dp)) {
         Box(
@@ -212,12 +210,10 @@ fun ProductDetailCard(
 
         Text(
             text = title,
-            fontSize = 22.sp,
-            lineHeight = 28.sp,
-            fontWeight = titleWeight,
+            fontSize = 20.sp,
             fontFamily = Montserrat,
-            color = Color(0xFF0F172A),
-            maxLines = 2,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
             overflow = TextOverflow.Ellipsis
         )
 
@@ -226,9 +222,9 @@ fun ProductDetailCard(
         Text(
             text = description,
             fontSize = 14.sp,
-            lineHeight = 20.sp,
-            color = bodyColor,
-            fontFamily = Montserrat
+            color = Color.Black,
+            fontFamily = Montserrat,
+            fontWeight = FontWeight.Normal
         )
 
         Spacer(Modifier.weight(1f))
@@ -246,7 +242,7 @@ fun ProductDetailCard(
                 Text(
                     text = "Price:",
                     color = blue,
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Medium,
                     fontFamily = Montserrat
                 )
@@ -254,7 +250,7 @@ fun ProductDetailCard(
                 Text(
                     text = priceText,
                     color = Color(0xFF0B0F19),
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = Montserrat
                 )
@@ -263,9 +259,9 @@ fun ProductDetailCard(
             Button(
                 onClick = onAddToCart,
                 modifier = Modifier
-                    .height(48.dp)
-                    .widthIn(min = 180.dp),
-                shape = RoundedCornerShape(10.dp),
+                    .height(38.dp)
+                    .width(182.dp),
+                shape = RoundedCornerShape(4.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = blue,
                     contentColor = Color.White
@@ -274,8 +270,8 @@ fun ProductDetailCard(
             ) {
                 Text(
                     text = "Add to Cart",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
                     fontFamily = Montserrat
                 )
             }

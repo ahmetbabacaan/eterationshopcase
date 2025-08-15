@@ -7,9 +7,6 @@ import androidx.navigation.compose.composable
 
 const val ProfileRoute = "ProfileRoute"
 
-fun NavController.navigateToProfile(navOptions: NavOptions? = null) {
-    this.navigate(ProfileRoute, navOptions)
-}
 
 fun NavGraphBuilder.profileScreen(
     navigateBack: () -> Unit,
