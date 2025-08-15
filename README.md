@@ -18,7 +18,6 @@ A sample Android application built with Kotlin, Jetpack libraries, and modern ar
 - Jetpack Compose (if used)
 - Android Architecture Components (ViewModel, LiveData/StateFlow)
 - Room Database
-- Paging 3
 - Hilt for Dependency Injection
 - Mockito & JUnit for testing
 
