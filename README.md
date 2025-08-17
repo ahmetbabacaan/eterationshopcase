@@ -24,14 +24,14 @@ A sample Android application built with Kotlin, Jetpack libraries, and modern ar
 ## Getting Started
 
 ## Project Structure
-data/ - Data sources, Room DAO, models
-domain/ - Business logic, use cases
-presentation/ - UI, ViewModels, events, states, effects
-app/src/test/ - Unit tests
+- data/ - Data sources, Room DAO, models
+- domain/ - Business logic, use cases
+- presentation/ - UI, ViewModels, events, states, effects
+- app/src/test/ - Unit tests
 
 ### Prerequisites
 
-- Android Studio (Giraffe or newer recommended)
+- Android Studio
 - JDK 17+
 - Gradle
 
